@@ -6,14 +6,14 @@
 /*   By: hyunwkim <hyunwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:35:13 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/21 17:49:38 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/21 19:47:32 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<fcntl.h>
 #include<stdio.h>
 #include<unistd.h>
 #include <stdlib.h>
-#define BUFFER_SIZE 5
+#define BUFFER_SIZE 2 
 
 char	*ft_strdup(const char *s1)
 {
@@ -65,8 +65,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		idx;
 	char	*ptr;
 
-	if (!s1)
-		return ((char *)s2);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	idx = 0;
@@ -100,6 +98,9 @@ int get_next_line(int fd, char **line)
 	char static *bak;
 	char	*temp;
 
+
+
+	// bak에 개행 있는지 부터 검사
 	read_size = 0;
 	while ((read_size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
@@ -122,8 +123,9 @@ int get_next_line(int fd, char **line)
 			return (1);
 		}
 	}
-	return 1;	
+	return (-1);	
 }
+
 int main()
 {
 	int fd;
