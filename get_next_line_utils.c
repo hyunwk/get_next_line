@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/22 10:16:10 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/22 11:37:35 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include<unistd.h>
 #include <stdlib.h>
 
-char			*ft_strdup(const char *s1)
+char			*ft_strdup(char *s1)
 {
 	char		*ptr;
 	int			len;
@@ -31,7 +31,7 @@ char			*ft_strdup(const char *s1)
 	return (ptr - len);
 }
 
-int			ft_strlen(const char *s)
+int			ft_strlen(char *s)
 {
 	int		len;
 
@@ -41,7 +41,7 @@ int			ft_strlen(const char *s)
 	return (len);
 }
 
-int			ft_strlcpy(char *dst, const char *src, int dstsize)
+int			ft_strlcpy(char *dst, char *src, int dstsize)
 {
 	int		i;
 	int		len_src;
@@ -86,8 +86,10 @@ int				is_newline(char *bak)
 
 	idx = 0;
 	while (bak[idx] != '\n')
+	{
 		idx++;
-	if (idx == ft_strlen(bak))
-		return (-1);
+		if (idx == ft_strlen(bak))
+			return (-1);
+	}
 	return (idx);
 }

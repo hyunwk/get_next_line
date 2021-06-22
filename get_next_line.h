@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:47 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/22 10:17:36 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/22 12:06:06 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 #include<unistd.h>
 #include <stdlib.h>
 
-char			*ft_strdup(const char *s1);
-int				ft_strlen(const char *s);
-int				ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char			*ft_strdup(char *s1);
+int				ft_strlen(char *s);
+int				ft_strlcpy(char *dst, char *src, size_t dstsize);
 char			*ft_strjoin(char *s1, char *s2);
 int				is_newline(char *bak);
+int				alloc_newline(char **line, char **bak, int newline_idx);
 int				get_next_line(int fd, char **line);
 #endif
