@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/22 21:59:13 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/23 11:57:49 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,21 @@ char			*ft_strdup(char *s1)
 {
 	char		*ptr;
 	int			len;
+	int			idx;
 
 	len = 0;
+	idx = 0;
 	while (s1[len])
 		len++;
 	if (!(ptr = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
-	while (*s1)
-		*ptr++ = *s1++;
-	*ptr = '\0';
-	return (ptr - len);
+	while (s1[idx])
+	{
+		ptr[idx] = s1[idx];
+		idx++;
+	}
+	ptr[idx] = '\0';
+	return (ptr);
 }
 
 int			ft_strlen(char *s)
@@ -85,15 +90,13 @@ char			*ft_strjoin(char *s1, char *s2)
 int				is_newline(char *bak)
 {
 	int			idx;
-	
-	if (!bak)
-		return (0);
+
 	idx = 0;
-	while (bak[idx] != '\n')
+	while (bak[idx])
 	{
 		idx++;
-		if (idx == ft_strlen(bak))
-			return (-1);
+		if (bak[idx] == '\n')
+			return (idx);
 	}
-	return (idx);
+	return (-1);
 }
