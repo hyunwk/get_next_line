@@ -6,9 +6,11 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/23 12:12:53 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/23 13:03:22 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 char			*ft_strdup(char *s1)
 {
@@ -89,9 +91,9 @@ int				is_newline(char *bak)
 	idx = 0;
 	while (bak[idx])
 	{
-		idx++;
 		if (bak[idx] == '\n')
 			return (idx);
+		idx++;
 	}
 	return (-1);
 }
