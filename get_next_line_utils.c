@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/22 11:37:35 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/22 21:59:13 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ char			*ft_strjoin(char *s1, char *s2)
 
 	if (!s1 && !s2)
 		return (0);
-	if (!s1 || !s2)
-		return (!s1 ? ft_strdup(s2) : ft_strdup(s1));
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	idx = 0;
@@ -83,7 +85,9 @@ char			*ft_strjoin(char *s1, char *s2)
 int				is_newline(char *bak)
 {
 	int			idx;
-
+	
+	if (!bak)
+		return (0);
 	idx = 0;
 	while (bak[idx] != '\n')
 	{
