@@ -6,14 +6,9 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/23 11:57:49 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/23 12:12:53 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include<fcntl.h>
-#include<stdio.h>
-#include<unistd.h>
-#include <stdlib.h>
 
 char			*ft_strdup(char *s1)
 {
@@ -36,9 +31,9 @@ char			*ft_strdup(char *s1)
 	return (ptr);
 }
 
-int			ft_strlen(char *s)
+int				ft_strlen(char *s)
 {
-	int		len;
+	int			len;
 
 	len = 0;
 	while (s[len])
@@ -46,10 +41,10 @@ int			ft_strlen(char *s)
 	return (len);
 }
 
-int			ft_strlcpy(char *dst, char *src, int dstsize)
+int				ft_strlcpy(char *dst, char *src, int dstsize)
 {
-	int		i;
-	int		len_src;
+	int			i;
+	int			len_src;
 
 	if (!src)
 		return (0);
