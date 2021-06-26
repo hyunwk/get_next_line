@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/26 18:17:59 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/26 18:24:33 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char				*ft_strjoin(char *s1, char *s2, int read_size)
 	return (ptr);
 }
 
-void				*ft_memset(void *b, int c, int len)
+void				*ft_memset(char *b, int c, int len)
 {
 	int				idx;
 	unsigned char	*p;

@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:35:13 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/26 18:11:43 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/26 18:24:00 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int				get_next_line(int fd, char **line)
 	static char *bak[256];
 
 	*line = 0;
-	ft_memset((void *)buff, 0, BUFFER_SIZE + 1);
+	ft_memset(buff, 0, BUFFER_SIZE + 1);
 	if (fd < 0 || BUFFER_SIZE <= 0 || line == 0 || fd > 255)
 		return (-1);
 	while ((newline_idx = is_newline(bak[fd])) == -1)
