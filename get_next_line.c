@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:35:13 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/26 18:42:35 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/26 21:12:48 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ int				get_next_line(int fd, char **line)
 {
 	int			read_size;
 	int			newline_idx;
-	char		buff[BUFFER_SIZE + 1];
+	char		*buff;
 	static char *bak[256];
 
 	*line = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0 || line == 0 || fd > 255)
+		return (-1);
+	if (!(buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	while ((newline_idx = is_newline(bak[fd])) == -1)
 	{
@@ -73,5 +75,6 @@ int				get_next_line(int fd, char **line)
 			break ;
 		bak[fd] = ft_strjoin(bak[fd], buff, read_size);
 	}
+	free(buff);
 	return (alloc_newline(line, &bak[fd], is_newline(bak[fd]), read_size));
 }
