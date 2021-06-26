@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:35:13 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/26 21:12:40 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/26 21:37:10 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,12 @@ int				get_next_line(int fd, char **line)
 		ft_memset(buff, 0, BUFFER_SIZE + 1);
 		if ((read_size = read(fd, buff, BUFFER_SIZE)) <= 0)
 			break ;
-		bak[fd] = ft_strjoin(bak[fd], buff, read_size);
+		if (!(bak[fd] = ft_strjoin(bak[fd], buff, read_size)))
+		{
+			free(buff);
+			return (-1);
+		}
 	}
+	free(buff);
 	return (alloc_newline(line, &bak[fd], is_newline(bak[fd]), read_size));
 }
