@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/23 13:03:22 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/23 18:05:48 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int				ft_strlcpy(char *dst, char *src, int dstsize)
 	return (len_src);
 }
 
-char			*ft_strjoin(char *s1, char *s2)
+char			*ft_strjoin(char *s1, char *s2, int read_size)
 {
 	int			len_s1;
 	int			len_s2;
@@ -73,6 +73,7 @@ char			*ft_strjoin(char *s1, char *s2)
 		return (ft_strdup(s2));
 	if (!s2)
 		return (ft_strdup(s1));
+	s1[read_size] = 0;
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	idx = 0;

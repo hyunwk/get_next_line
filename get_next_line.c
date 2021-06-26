@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:35:13 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/23 13:05:06 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/24 11:22:02 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ int				get_next_line(int fd, char **line)
 	while ((newline_idx = is_newline(bak)) == -1)
 	{
 		if ((read_size = read(fd, buff, BUFFER_SIZE)) <= 0)
+		//if ((read_size = read(fd, buff, BUFFER_SIZE)) == 0)
 			break ;
-		buff[read_size] = 0;
-		bak = ft_strjoin(bak, buff);
+		bak = ft_strjoin(bak, buff, read_size);
 	}
 	return (alloc_newline(line, &bak, is_newline(bak), read_size));
 }
 
+#include <stdio.h>
 int main()
 {
 	int fd;
@@ -71,5 +72,7 @@ int main()
 	}
 	if (gnl_result == 0)
 		return (0);
+	free(line);
+	close(fd);
 	return (0);
 }
