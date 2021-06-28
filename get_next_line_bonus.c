@@ -6,7 +6,7 @@
 /*   By: hyunwkim <hyunwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:35:13 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/26 21:37:10 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/06/28 12:10:26 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int				get_next_line(int fd, char **line)
 			break ;
 		if (!(bak[fd] = ft_strjoin(bak[fd], buff, read_size)))
 		{
+			free(bak[fd]);
 			free(buff);
 			return (-1);
 		}
