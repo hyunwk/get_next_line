@@ -6,13 +6,13 @@
 /*   By: hyunwkim <hyunwkim@42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:09:07 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/28 12:22:02 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/07/15 02:15:40 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char				*ft_strdup(char *s1)
+char	*ft_strdup(char *s1)
 {
 	char			*ptr;
 	int				len;
@@ -22,7 +22,8 @@ char				*ft_strdup(char *s1)
 	idx = 0;
 	while (s1[len])
 		len++;
-	if (!(ptr = (char *)malloc(sizeof(char) * (len + 1))))
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ptr)
 		return (0);
 	while (s1[idx])
 	{
@@ -33,7 +34,7 @@ char				*ft_strdup(char *s1)
 	return (ptr);
 }
 
-int					ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
 	int				len;
 
@@ -43,7 +44,7 @@ int					ft_strlen(char *s)
 	return (len);
 }
 
-int					ft_strlcpy(char *dst, char *src, int dstsize)
+int	ft_strlcpy(char *dst, char *src, int dstsize)
 {
 	int				i;
 	int				len_src;
@@ -60,7 +61,7 @@ int					ft_strlcpy(char *dst, char *src, int dstsize)
 	return (len_src);
 }
 
-char				*ft_strjoin(char *s1, char *s2, int read_size)
+char	*ft_strjoin(char *s1, char *s2, int read_size)
 {
 	int				len_s1;
 	int				len_s2;
@@ -77,7 +78,8 @@ char				*ft_strjoin(char *s1, char *s2, int read_size)
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	idx = 0;
-	if (!(ptr = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1))))
+	ptr = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	if (!ptr)
 		return (NULL);
 	ft_strlcpy(ptr, s1, len_s1 + 1);
 	free(s1);
@@ -85,12 +87,12 @@ char				*ft_strjoin(char *s1, char *s2, int read_size)
 	return (ptr);
 }
 
-void				*ft_memset(char *b, int c, long long len)
+void	*ft_memset(char *b, int c, long long len)
 {
 	long long		idx;
 	unsigned char	*p;
 
-	p = (unsigned char*)b;
+	p = (unsigned char *)b;
 	idx = 0;
 	while (idx < len)
 		p[idx++] = c;

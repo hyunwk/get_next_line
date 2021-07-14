@@ -6,13 +6,13 @@
 /*   By: hyunwkim <hyunwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:35:13 by hyunwkim          #+#    #+#             */
-/*   Updated: 2021/06/28 12:23:42 by hyunwkim         ###   ########.fr       */
+/*   Updated: 2021/07/15 02:17:57 by hyunwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int				alloc_newline(char **line, char **bak, int nl_idx, int read)
+int	alloc_newline(char **line, char **bak, int nl_idx, int read)
 {
 	char		*temp;
 
@@ -39,7 +39,7 @@ int				alloc_newline(char **line, char **bak, int nl_idx, int read)
 	return (0);
 }
 
-int				is_newline(char *bak)
+int	is_newline(char *bak)
 {
 	int			idx;
 
@@ -56,29 +56,27 @@ int				is_newline(char *bak)
 	return (-1);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	int			read_size;
 	int			newline_idx;
 	char		*buff;
-	static char *bak[256];
+	static char	*bak[256];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || line == 0 || fd > 255)
 		return (-1);
 	*line = 0;
-	if (!(buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
 		return (-1);
-	while ((newline_idx = is_newline(bak[fd])) == -1)
+	newline_idx = -1;
+	while (newline_idx == -1)
 	{
-		ft_memset(buff, 0, BUFFER_SIZE + 1);
-		if ((read_size = read(fd, buff, BUFFER_SIZE)) <= 0)
+		read_size = read(fd, buff, BUFFER_SIZE);
+		if (read_size <= 0)
 			break ;
-		if (!(bak[fd] = ft_strjoin(bak[fd], buff, read_size)))
-		{
-			free(bak[fd]);
-			free(buff);
-			return (-1);
-		}
+		bak[fd] = ft_strjoin(bak[fd], buff, read_size);
+		newline_idx = is_newline(bak[fd]);
 	}
 	free(buff);
 	return (alloc_newline(line, &bak[fd], is_newline(bak[fd]), read_size));
